@@ -1,2 +1,1 @@
-# dl_with_np
-Implement artificial neural network with numpy
+# Image Captioning with numpy

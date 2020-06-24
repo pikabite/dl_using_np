@@ -1,1 +1,1 @@
-docker build --tag ann_with_np:1 .
+docker build --tag dy_dl_with_np:1 .

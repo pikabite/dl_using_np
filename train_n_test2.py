@@ -1,32 +1,32 @@
 #%%
 
 from models.ImageCaptioning import ImageCaptioning
+from models.Cnn import Cnn
 from dataloader.caption_data import Caption_data
+from dataloader.mnist import MNIST_loader
 import numpy as np
 import csv
 from pathlib import Path
 
 #%%
 
-model = ImageCaptioning()
+model = Cnn()
 
-desc_path = Path("datasets/descriptions.pkl")
-embed_path = Path("datasets/embedding_matrix.pkl")
-img_root = Path("datasets/Flicker8k_Dataset")
-dataloader = Caption_data(desc_path, embed_path, img_root)
+dataloader = MNIST_loader()
+dataloader.epoch_end()
 
 modelname="ImageCaptioning"
 logfile = "./log_"+modelname+".csv"
 lossfig_save = "loss_graph_"+modelname+".png"
-lr = 0.001
+lr = 0.1
 
 # %%
 
-batch_size = 10
-data_total_size = len(dataloader.ids)
+batch_size = 16
+data_total_size = len(dataloader.train["indexes"])
 steps = int(data_total_size/batch_size)
 
-epoch = 3
+epoch = 1
 
 # %%
 
@@ -38,18 +38,21 @@ for e in range(epoch) :
     loss_in_epoch = 0
     for i in range(steps) :
 
-        b_images, b_texts_onehot, b_texts_embed = dataloader.batching(batch_size=batch_size)
+        b_images, y = dataloader.get_batch(step=i, batch_size=batch_size)
 
-        y_hat = model.forward(b_images, b_texts_embed)
-        loss = model.calculate_loss(y_hat, b_texts_onehot)
+        y_hat = model.forward(b_images, y)
+        # print(y_hat)
+        loss = model.calculate_loss(y_hat, y)
         print(loss)
-        model.backward(loss, b_texts_onehot, lr=lr)
+        model.backward(loss, y, lr=lr)
         loss_in_epoch += loss/steps
 
         dict_data.append({
             "step" : i + steps*e,
             "loss" : loss
         })
+
+        # break
     # dloader.epoch_end()
 
 
