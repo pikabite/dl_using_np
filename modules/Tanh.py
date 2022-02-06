@@ -4,6 +4,12 @@ import numpy as np
 
 # %%
 
+"""
+Tanh
+
+Tangent hyperbolic operation for activation function
+
+"""
 class Tanh :
 
     def __init__ (self) :

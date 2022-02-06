@@ -5,6 +5,13 @@ import numpy as np
 
 # %%
 
+"""
+
+AvgPool2D
+Average Pooling on 2 dimensional feature
+
+
+"""
 class AvgPool2d :
 
     def __init__ (self, stride=2) :

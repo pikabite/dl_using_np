@@ -5,8 +5,14 @@ import numpy as np
 
 # %%
 
+"""
+
+ADD Layer
+Simple Summation of given tensors
+
+TODO : Add axial addition
+"""
 class Add :
-    
 
     def __init__ (self) :
         self.tapes = {

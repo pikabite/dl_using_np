@@ -5,6 +5,12 @@ import numpy as np
 
 # %%
 
+"""
+Softmax
+
+Softmax operation layer
+
+"""
 class Softmax :
     
     def __init__ (self) :

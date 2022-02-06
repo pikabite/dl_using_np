@@ -4,7 +4,11 @@ import numpy as np
 
 
 # %%
+"""
+Concat
+Concatenate multipl tensors
 
+"""
 class Concat :
     
     def __init__ (self) :

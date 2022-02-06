@@ -4,14 +4,30 @@ import numpy as np
 
 # %%
 
+"""
+Conv2d
+
+Convolution operation layer.
+include initialize weights, convolution, back propagation
+
+for simple operation, applied im2col tricks in forward backward
+
+TODO : implement multiple initializer, cuda code, etc...
+
+"""
 class Conv2d :
-    
 
     def __init__ (self, input_channel, output_channel, kernel_size=3, strides=1, padding="SAME") :
 
         w_shape = (kernel_size, kernel_size, input_channel, output_channel)
+        
+        # Normal initializer
         # self.w = np.random.normal(0, np.sqrt(2/input_channel), w_shape)
+        
+        # Random uniform initializer
         # self.w = np.random.normal(0, 0.05, w_shape)
+        
+        # He normal initializer
         self.w = np.sqrt(1/input_channel) * np.random.randn(*w_shape)
         self.b = np.zeros((output_channel))
         self.tapes = {

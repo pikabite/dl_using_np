@@ -4,6 +4,14 @@ import numpy as np
 
 # %%
 
+"""
+LinearLayer
+
+Linear operation, aka Multi Layer Perceptron
+
+TODO : add multiple initializer
+
+"""
 class LinearLayer :
     
     def __init__ (self, input_channel, output_channel) :

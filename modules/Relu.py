@@ -4,6 +4,14 @@ import numpy as np
 
 # %%
 
+"""
+Relu
+
+simple relu activation function
+
+TODO : add versions (leakyReLu, Relu6, etc...)
+
+"""
 class Relu :
 
     def __init__ (self) :

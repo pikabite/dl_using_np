@@ -132,32 +132,35 @@ class Cnn :
 
 # %%
 
-tmptmp = Cnn()
+if __name__ == '__main__':
+    
 
-from dataloader.mnist import MNIST_loader
+    tmptmp = Cnn()
 
-mnist_loader = MNIST_loader()
-mnist_loader.epoch_end()
+    from dataloader.mnist import MNIST_loader
 
-
-# %%
-
-for i in range(3000) :
-    i = np.random.randint(0, 3000)
-    # i = 10
-    im, la = mnist_loader.get_batch(i, 20)
-    y_hat = tmptmp.forward(im)
-    total_loss = tmptmp.calculate_loss(y_hat, la)
-    print(total_loss)
-    tmptmp.backward(total_loss, la, lr=0.0001)
-
-# %%
-tmptim, tmptla = mnist_loader.get_test(20, 20)
-tmptim = np.expand_dims(tmptim, axis=-1)/255
-tmptout = tmptmp.forward(tmptim,)
-tmptout.shape
+    mnist_loader = MNIST_loader()
+    mnist_loader.epoch_end()
 
 
-# %%
-acc = np.sum(((np.argmax(tmptout, axis=-1) == tmptla)*1)/20)
-acc
+    # %%
+
+    for i in range(3000) :
+        i = np.random.randint(0, 3000)
+        # i = 10
+        im, la = mnist_loader.get_batch(i, 20)
+        y_hat = tmptmp.forward(im)
+        total_loss = tmptmp.calculate_loss(y_hat, la)
+        print(total_loss)
+        tmptmp.backward(total_loss, la, lr=0.0001)
+
+    # %%
+    tmptim, tmptla = mnist_loader.get_test(20, 20)
+    tmptim = np.expand_dims(tmptim, axis=-1)/255
+    tmptout = tmptmp.forward(tmptim,)
+    tmptout.shape
+
+
+    # %%
+    acc = np.sum(((np.argmax(tmptout, axis=-1) == tmptla)*1)/20)
+    acc

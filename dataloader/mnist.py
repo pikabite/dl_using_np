@@ -5,7 +5,7 @@ import pickle
 import numpy as np
 import idx2numpy
 import numpy as np
-import cv2
+# import cv2
 
 # %%
 
@@ -39,11 +39,11 @@ class MNIST_loader :
 
     def load_mnist(self, root_folder_path, data_type):
         if data_type == "train" :
-            filename1 = str(root_folder_path / "train-images-idx3-ubyte")
-            filename2 = str(root_folder_path / "train-labels-idx1-ubyte")
+            filename1 = str(root_folder_path / "train-images.idx3-ubyte")
+            filename2 = str(root_folder_path / "train-labels.idx1-ubyte")
         else :
-            filename1 = str(root_folder_path / "t10k-images-idx3-ubyte")
-            filename2 = str(root_folder_path / "t10k-labels-idx1-ubyte")
+            filename1 = str(root_folder_path / "t10k-images.idx3-ubyte")
+            filename2 = str(root_folder_path / "t10k-labels.idx1-ubyte")
 
         images = idx2numpy.convert_from_file(filename1)
         labels = idx2numpy.convert_from_file(filename2)

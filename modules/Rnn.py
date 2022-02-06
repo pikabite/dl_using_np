@@ -8,7 +8,12 @@ from modules.Softmax import Softmax
 
 """
 
-Rnn (output doesn't include softmax)
+Rnn
+Simple Recurrent Neural Network
+which has array structured gradients for 
+back propagation through time (bptt)
+
+TODO : create LSTM, add initializer options
 
 """
 class Rnn :
